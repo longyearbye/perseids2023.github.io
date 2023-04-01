@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Meteor Shower Countdown 2023</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.jpg" />
+
+    <link rel="stylesheet" href="countdown.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="header">
+      <video autoplay loop muted plays-inline class="back-video">
+        /* video source: pexels.com */
+        <source src="star2.mp4" type="video/mp4" />
+      </video>
+      <div class="content">
+        <h1>PERSEID METEOR SHOWER 2023</h1>
+        <p id="timer"></p>
+      </div>
+    </section>
+    <script>
+      let countdownDate = new Date("Aug 12, 2023 00:00:00").getTime();
+      let x = setInterval(function () {
+        let now = new Date().getTime();
+        let distance = countdownDate - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("timer").innerHTML =
+            "IT'S THE NIGHT OF SHOOTING STARS!";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
